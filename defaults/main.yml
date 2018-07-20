@@ -126,7 +126,7 @@ shorewall_startup:            true
 
 shorewall_immediate_restart:  false
 
-shorewall_version:            4
+shorewall_version:            4   # Specify your Shorewall version 4, 5, 52 (5.2)
 
 shorewall_zones:
   - name:                     fw
