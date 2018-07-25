@@ -5,7 +5,7 @@ Installs and configures Shorewall firewall (http://shorewall.net)
 
 ## Build Status
 
-[![Build Status](https://travis-ci.org/mrlesmithjr/ansible-shorewall.svg?branch=master)](https://travis-ci.org/mrlesmithjr/ansible-shorewall)
+[![Build Status](https://api.travis-ci.org/chris968/ansible-shorewall.svg?branch=master)](https://travis-ci.org/chris968/ansible-shorewall)
 
 Requirements
 ------------
