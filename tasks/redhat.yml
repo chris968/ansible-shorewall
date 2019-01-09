@@ -1,0 +1,25 @@
+---
+- name: redhat | Getting EPEL repository status
+  shell: yum-config-manager epel | awk '/enabled\ =/ {print $3}'
+  register: epelstatus
+
+- name: redhat | Installing EPEL repository
+  yum:
+    name: epel-release
+    state: present
+  become: yes
+
+- name: redhat | Enabling EPEL repository
+  command: yum-config-manager epel --enable
+  become: yes
+
+- name:    redhat | Installing Shorewall
+  yum:
+    name:  shorewall
+    state: present
+  become: yes
+
+- name: redhat | Disabling EPEL repository
+  command: yum-config-manager epel --disable
+  when: epelstatus.stdout == "False" or epelstatus.stdout | length == 0
+  become: yes
