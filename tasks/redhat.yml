@@ -1,12 +1,4 @@
 ---
-- name: redhat | Getting EPEL repository status
-  shell: yum-config-manager epel | awk '/enabled\ =/ {print $3}'
-  args:
-    warn: no
-  register: epelstatus
-  tags:
-    - skip_ansible_lint
-
 - name: redhat | Installing EPEL repository
   yum:
     name: epel-release
@@ -17,22 +9,13 @@
   delay: 10
   become: yes
 
-- name: redhat | Enabling EPEL repository
-  command: yum-config-manager epel --enable
-  when: epelstatus.stdout == "False"
-  become: yes
-
-- name:    redhat | Installing Shorewall
+- name: redhat | Installing Shorewall
   yum:
     name:  shorewall
     state: present
+    enablerepo: epel
   register: task_result
   until: task_result is success
   retries: 3
   delay: 10
-  become: yes
-
-- name: redhat | Disabling EPEL repository
-  command: yum-config-manager epel --disable
-  when: epelstatus.stdout == "False" or epelstatus.stdout | length == 0
   become: yes
