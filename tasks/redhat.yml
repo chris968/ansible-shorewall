@@ -11,6 +11,10 @@
   yum:
     name: epel-release
     state: present
+  register: task_result
+  until: task_result is success
+  retries: 3
+  delay: 10
   become: yes
 
 - name: redhat | Enabling EPEL repository
@@ -22,6 +26,10 @@
   yum:
     name:  shorewall
     state: present
+  register: task_result
+  until: task_result is success
+  retries: 3
+  delay: 10
   become: yes
 
 - name: redhat | Disabling EPEL repository
