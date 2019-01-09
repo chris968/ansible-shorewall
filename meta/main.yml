@@ -3,7 +3,7 @@ galaxy_info:
   author:               Larry Smith Jr.
   description:          Installs and configures Shorewall firewall (http://shorewall.net)
 
-  license:              license (GPLv2, CC-BY, etc)
+  license: GPLv2
 
   min_ansible_version:  1.2
 
@@ -25,4 +25,4 @@ galaxy_info:
     - security
     - firewall
 
-dependencies:           []
+ldependencies:           []
