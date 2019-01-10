@@ -1,0 +1,12 @@
+#
+# shorewall-snat
+#
+{% if shorewall_masquerade_info.enabled %}
+{%  if shorewall_masquerade_info.rules is defined %}
+{%    for rule in shorewall_masquerade_info.rules %}
+{%      if rule.address is defined %}SNAT({{ rule.address }}){% else %}MASQUERADE{% endif %} {{ rule.sources|join (',') }} {{ rule.interface }}
+{%    endfor %}
+{%  else %}
+{%  if shorewall_masquerade_info.address is defined %}SNAT({{ shorewall_masquerade_info.address }}){% else %}MASQUERADE{% endif %} {{ shorewall_masquerade_info.sources|join (',') }} {{ shorewall_masquerade_info.interface }}
+{%  endif %}
+{% endif %}
