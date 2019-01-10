@@ -111,7 +111,7 @@
   become: true
   notify:
     - restart shorewall
-  when: shorewall_providers
+  when: shorewall_providers is defined
 
 - meta:     flush_handlers
   become:   true
