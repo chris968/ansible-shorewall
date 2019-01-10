@@ -2,7 +2,7 @@
 - name: redhat | Setting shorewall_version (Fedora)
   set_fact:
     shorewall_version: 52
-  when: ansible_distribution == "Fedora"
+  when: ansible_distribution | lower == "fedora"
 
 - name: redhat | Installing EPEL repository
   yum:
@@ -13,7 +13,7 @@
   retries: 3
   delay: 10
   become: yes
-  when: ansible_distribution != "Fedora"
+  when: ansible_distribution | lower != "fedora"
 
 - name: redhat | Installing Shorewall (RHEL, Centos)
   yum:
@@ -25,7 +25,7 @@
   retries: 3
   delay: 10
   become: yes
-  when: ansible_distribution == "RedHat" or ansible_distribution == "Centos"
+  when: ansible_distribution | lower == "redhat" or ansible_distribution | lower == "centos"
 
 - name: redhat | Installing Shorewall (Fedora)
   yum:
@@ -36,4 +36,4 @@
   retries: 3
   delay: 10
   become: yes
-  when: ansible_distribution == "Fedora"
+  when: ansible_distribution | lower == "fedora"
