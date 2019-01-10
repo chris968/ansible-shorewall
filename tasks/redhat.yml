@@ -1,4 +1,9 @@
 ---
+- name: redhat | Setting shorewall_version (Fedora)
+  set_fact:
+    shorewall_version: 52
+  when: ansible_distribution == "Fedora"
+
 - name: redhat | Installing EPEL repository
   yum:
     name: epel-release
