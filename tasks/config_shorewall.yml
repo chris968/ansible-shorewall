@@ -77,7 +77,7 @@
   notify:
     - restart shorewall
 
-- name:     shorewall_config | Configuring Shorewall masquerading
+- name:     shorewall_config | Configuring Shorewall masquerading (Shorewall 4.0 to 5.1)
   template:
     src:    etc/shorewall/masq.j2
     dest:   /etc/shorewall/masq
@@ -87,6 +87,19 @@
   become:   true
   notify:
     - restart shorewall
+  when: shorewall_version != 52
+
+- name:     shorewall_config | Configuring Shorewall masquerading (Shorewall 5.2)
+  template:
+    src:    etc/shorewall/snat.j2
+    dest:   /etc/shorewall/snat
+    owner:  root
+    group:  root
+    mode:   0640
+  become:   true
+  notify:
+    - restart shorewall
+  when: shorewall_version == 52
 
 - meta:     flush_handlers
   become:   true
