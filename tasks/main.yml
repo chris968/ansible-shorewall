@@ -1,10 +1,10 @@
 ---
 # tasks file for ansible-shorewall
 - include: debian.yml
-  when: ansible_os_family == "Debian"
+  when: ansible_os_family | lower == "debian"
 
 - include: redhat.yml
-  when: ansible_os_family == "RedHat"
+  when: ansible_os_family | lower == "redhat"
 
 - include: config_shorewall.yml
   when: shorewall_config
