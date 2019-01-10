@@ -101,6 +101,18 @@
     - restart shorewall
   when: shorewall_version == 52
 
+- name: shorewall_config | Configuring Shorewall providers
+  template:
+    src:  etc/shorewall/providers.j2
+    dest: /etc/shorewall/providers
+    owner: root
+    group: root
+    mode: 0640
+  become: true
+  notify:
+    - restart shorewall
+  when: shorewall_providers
+
 - meta:     flush_handlers
   become:   true
   when:     shorewall_immediate_restart
