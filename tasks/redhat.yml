@@ -38,3 +38,8 @@
   delay: 10
   become: yes
   when: ansible_distribution | lower == "fedora"
+
+- name: redhat | Enabling Shorewall service
+  systemd:
+    name: shorewall
+    enabled: yes
