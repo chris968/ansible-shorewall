@@ -15,5 +15,6 @@
 ###############################################################################
 #ZONE	INTERFACE	OPTIONS
 {% for item in shorewall_interfaces %}
-{{ item.zone }}   {{ item.name }}   {{ item.options|join (',') }}
+{{ item.zone }}   {{ item.name }}{% if item.options is defined and item.options is not none %}   {{ item.options|join (',') }}{% endif %}
+
 {% endfor %}
