@@ -113,6 +113,18 @@
     - restart shorewall
   when: shorewall_providers is defined
 
+- name: shorewall_config | Configuring Shorewall mangle
+  template:
+    src:  etc/shorewall/mangle.j2
+    dest: /etc/shorewall/mangle
+    owner: root
+    group: root
+    mode: 0640
+  become: true
+  notify:
+    - restart shorewall
+  when: shorewall_mangle is defined
+
 - meta:     flush_handlers
   become:   true
   when:     shorewall_immediate_restart
