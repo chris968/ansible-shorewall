@@ -149,12 +149,13 @@ shorewall_zones:
 # as a multi-ISP firewall/router
 # refer to the Shorewall documentation for further detail
 # http://www.shorewall.net/MultiISP.html
-
-
+#
+#
+#
 # providers can be configured like in the example bellow
 # refer to the Shorewall documentation for further detail
 # http://www.shorewall.net/manpages/shorewall-providers.html
-
+#
 #shorewall_providers:
 #  - name: wan1
 #    number: 1
@@ -168,11 +169,11 @@ shorewall_zones:
 #    interface: eth1
 #    gateway: 192.168.2.254
 #    options:
-
+#
 # mangle rules can be configured like in the example bellow
 # refer to the Shorewall documentation for further detail
 # http://www.shorewall.net/manpages/shorewall-mangle.html
-
+#
 #shorewall_mangle:
 #  - source: 192.168.10.0/24
 #    dest: 0.0.0.0/0
@@ -182,4 +183,3 @@ shorewall_zones:
 #    dest: 192.168.40.0/24
 #    proto: tcp
 #    action: MARK(1)
-
