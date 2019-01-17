@@ -17,7 +17,10 @@
 ?SECTION {{ item.section }}
 {%   if item.rules is defined %}
 {%     for rule in item.rules %}
-{{ rule.action }}   {{ rule.source }}   {{ rule.dest }}   {{ rule.proto }}   {{ rule.dest_ports|join (',') }}
+{{ rule.action }}   {% if rule.source is iterable and rule.source is not string %}{{ rule.source|join(',') }}{% else %}{{ rule.source }}{% endif %}
+   {% if rule.dest is iterable and rule.dest is not string %}{{ rule.dest|join(',') }}{% else %}{{ rule.dest }}{% endif %}
+   {% if rule.proto is iterable and rule.proto is not string %}{{ rule.proto|default('', true)|join(',') }}{% else %}{{ rule.proto }}{% endif %}
+   {{ rule.dest_ports|default('', true)|join (',') }}
 {%     endfor %}
 {% endif %}
 {% endfor %}
