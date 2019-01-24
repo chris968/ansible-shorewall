@@ -12,6 +12,9 @@
 #
 ##############################################################################################################################################################
 #ACTION		SOURCE		DEST		PROTO	DPORT	SPORT	USER	TEST	LENGTH	TOS	CONNBYTES	HELPER	PROBABILITY	DSCP	SWITCH
+{% if shorewall_mangle is defined and shorewall_mangle is iterable %}
 {% for item in shorewall_mangle %}
 {{ item.action }}   {{ item.source }}   {{ item.dest }}    {{ item.proto }}
 {% endfor %}
+{% endif %}
+
