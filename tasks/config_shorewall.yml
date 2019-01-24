@@ -123,7 +123,6 @@
   become: true
   notify:
     - restart shorewall
-  when: shorewall_mangle is defined
 
 - meta:     flush_handlers
   become:   true
