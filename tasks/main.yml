@@ -3,10 +3,10 @@
 - include_tasks: set_facts.yml
 
 - include: debian.yml
-  when: ansible_os_family | lower == "debian"
+  when: ansible_os_family == "Debian"
 
 - include: redhat.yml
-  when: ansible_os_family | lower == "redhat"
+  when: ansible_os_family == "RedHat"
 
 - include: config_shorewall.yml
   when: shorewall_config|bool
