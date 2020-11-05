@@ -1,6 +1,4 @@
-#
-# shorewall-snat
-#
+{{ ansible_managed | comment }}
 {% if shorewall_masquerade_info.enabled %}
 {%  if shorewall_masquerade_info.rules is defined %}
 {%    for rule in shorewall_masquerade_info.rules %}

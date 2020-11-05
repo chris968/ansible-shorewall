@@ -1,10 +1,6 @@
 ---
-- name:    debian | Installing Shorewall
+- name: debian | Installing Shorewall
   apt:
-    name:  shorewall
+    name: shorewall
     state: present
-  register: task_result
-  until: task_result is success
-  retries: 3
-  delay: 10
-  become:  true
+  become: true
