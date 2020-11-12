@@ -1,12 +1,4 @@
-#
-# Shorewall -- /etc/shorewall/providers
-#
-# For information about entries in this file, type "man shorewall-providers"
-#
-# For additional information, see http://shorewall.net/MultiISP.html
-#
-############################################################################################
-#NAME	NUMBER	MARK	DUPLICATE	INTERFACE	GATEWAY		OPTIONS		COPY
+{{ ansible_managed | comment }}
 {% for item in shorewall_providers %}
 {{ item.name }} {{ item.number }} {{ item.mark|default('-',true) }} {{ item.duplicate|default('-',true) }} {{ item.interface }} {{ item.gateway }} {{ item.options|default('-',true) }} {{ item.ifcopy|default('-',true) }}
 {% endfor %}
