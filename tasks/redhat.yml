@@ -39,6 +39,11 @@
   become: yes
   when: ansible_distribution | lower == "fedora"
 
+- name: redhat | Get Installed Shorewall Version
+  yum:
+    list: shorewall
+  register: result
+
 - name: redhat | Enabling Shorewall service
   systemd:
     name: shorewall
