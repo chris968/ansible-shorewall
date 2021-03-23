@@ -64,11 +64,11 @@
     shorewall_default_actions_macros: legacy
   when: >
     ansible_os_family == "RedHat" and
-    ansible_facts.packages.shorewall|map(attribute='version')|first is version('5.1', '<')
+    ansible_facts.packages.shorewall|map(attribute='version')|first is version('5.1.2', '<')
 
 - name: set_facts | Setting Shorewall Default Actions/Macros
   set_fact:
     shorewall_default_actions_macros: new
   when: >
     ansible_os_family == "RedHat" and
-    ansible_facts.packages.shorewall|map(attribute='version')|first is version('5.1', '>=')
+    ansible_facts.packages.shorewall|map(attribute='version')|first is version('5.1.2', '>=')
